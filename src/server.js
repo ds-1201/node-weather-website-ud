@@ -5,6 +5,7 @@ const geocode = require("./utils/geocode");
 const forecast = require("./utils/forecast");
 
 const app = express();
+const port = process.env.PORT || 3000;
 
 // Define paths
 const viewsPath = path.join(__dirname, "..", "templates", "views");
@@ -57,16 +58,6 @@ app.get("/weather", (req, res) => {
   });
 });
 
-// app.get("/product", (req, res) => {
-//   if (!req.query.search) {
-//     return res.send("search query is compulsory");
-//   }
-//   res.send({
-//     prducts: [],
-//   });
-//   console.log(req.query);
-// });
-
 app.get("/help", (req, res) => {
   res.render("help", {
     title: "Help",
@@ -97,6 +88,6 @@ app.get("*", (req, res) => {
   });
 });
 
-app.listen(3000, () => {
+app.listen(port, () => {
   console.log("Server is started on port 3000");
 });
